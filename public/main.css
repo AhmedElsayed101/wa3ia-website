@@ -1,0 +1,52 @@
+/*------------------------------------------------------------------
+
+Project:	Alex Alex- One Page Portfolio
+Version:	1.0.0
+Assigned to:	Templatemonster
+Primary use:	Business, Contruction, Architecture, Creative Agency 
+
+-------------------------------------------------------------------*/
+
+/*------------------------------------------------------------------
+[Table of contents]
+
+1. Fonts
+2. Common css
+3. Preloader css
+4. Header
+5. Social icon
+6. Slider / banner Section
+7. About section
+8. Service Section
+9. Project Section
+10. Testimonials Section
+11. Blog Section
+12. Partner Slider
+13. Contact
+14. Footer
+15. Single Post
+
+
+
+/*---bootstap.CSS ---*/
+@import url("assets/css/bootstrap.min.css");
+ /*---fancybox.CSS ---*/
+@import url("assets/plugin/fancyBox/css/jquery.fancybox.css");
+/*---owl-carousal.CSS ---*/
+@import url("assets/plugin/owl-carousel/css/owl.carousel.css");
+@import url("assets/plugin/owl-carousel/css/owl.theme.default.css");
+/*---fontawesome.CSS  font ---*/
+@import url("assets/plugin/font-awesome/css/font-awesome.min.css");
+
+/*---STYLE.CSS style---*/
+@import url("assets/css/style.css");
+
+/*---responsive.CSS  style---*/
+@import url("assets/css/responsive.css");
+
+
+/* 
+body { padding-top: 40px; }
+@media screen and (max-width: 768px) {
+    body { padding-top: 0px; }
+} */

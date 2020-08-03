@@ -1,7 +1,7 @@
-import React, { Component } from 'react'
-import { connect } from "react-redux";
+import React, { Component, Fragment } from 'react'
+// import { connect } from "react-redux";
 
-import { handleSignIn } from "../../actions/authActions";
+// import { handleSignIn } from "../../actions/authActions";
 
 class SignIn extends Component {
 
@@ -14,7 +14,7 @@ class SignIn extends Component {
         // console.log(e)
         const {signIn} = this.props
         e.preventDefault()
-        signIn(this.state)
+        // signIn(this.state)
         console.log(this.state)
       
     }
@@ -31,7 +31,10 @@ class SignIn extends Component {
         const {authError} = this.props
 
         return (
-            <div className = "container">
+
+            <Fragment>
+            <div className="container">
+            <div className = "container" style = {{marginTop : 100}}>
                 <form onSubmit = {this.submitForm} className="white">
                     <h5 className = "grey-text text-darken-3">Sign In</h5>
                     <div className="input-field">
@@ -51,24 +54,26 @@ class SignIn extends Component {
                     </div>
                 </form>
 
-                
-            </div>
+                </div>
+                </div> 
+            </Fragment>
         )
     }
 }
 
-const mapStateToProps = (state) => {
+// const mapStateToProps = (state) => {
 
-    return {
-        authError : state.auth.authError
-    }
-}
+//     return {
+//         authError : state.auth.authError
+//     }
+// }
 
-const mapDispatchToProps = (dispatch) => {
+// const mapDispatchToProps = (dispatch) => {
 
-    return {
-        signIn : (creds) => dispatch (handleSignIn(creds))
-    }
-}
+//     return {
+//         signIn : (creds) => dispatch (handleSignIn(creds))
+//     }
+// }
 
-export default connect(mapStateToProps, mapDispatchToProps) (SignIn)
+// export default connect(mapStateToProps, mapDispatchToProps) (SignIn)
+export default SignIn
