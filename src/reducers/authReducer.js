@@ -5,7 +5,7 @@ import {LOGIN_ERROR,
     SIGN_UP_ERROR
     
 
-} from "../actions/authActions";
+} from "../actions/authAction";
 const initState = {
 
 authError : null

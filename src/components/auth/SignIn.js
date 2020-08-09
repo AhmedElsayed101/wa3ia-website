@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react'
-// import { connect } from "react-redux";
-
-// import { handleSignIn } from "../../actions/authActions";
+import { connect } from "react-redux";
+import firebase from "firebase/app";
+import { handleSignIn, signIn } from "../../actions/authAction";
 
 class SignIn extends Component {
 
@@ -14,7 +14,7 @@ class SignIn extends Component {
         // console.log(e)
         const {signIn} = this.props
         e.preventDefault()
-        // signIn(this.state)
+        signIn(this.state)
         console.log(this.state)
       
     }
@@ -26,6 +26,27 @@ class SignIn extends Component {
         })
     }
 
+    google () {
+        let provider = new firebase.auth.GoogleAuthProvider();
+        firebase.auth().signInWithPopup(provider).then(function(result) {
+            // This gives you a Google Access Token. You can use it to access the Google API.
+            var token = result.credential.accessToken;
+            // The signed-in user info.
+            var user = result.user;
+            // ...
+          }).catch(function(error) {
+            // Handle Errors here.
+            var errorCode = error.code;
+            var errorMessage = error.message;
+            // The email of the user's account used.
+            var email = error.email;
+            // The firebase.auth.AuthCredential type that was used.
+            var credential = error.credential;
+            // ...
+          }).then(() => {
+            firebase.auth().currentUser.sendEmailVerification()
+        })
+    }
     render() {
 
         const {authError} = this.props
@@ -47,12 +68,14 @@ class SignIn extends Component {
                     </div>
                     <div className="input-field center">
                         <button className = "btn pink lighten-1 z-depth-0 ">Login</button>
-                        <div className="red-text center">
+                        <p className="text-danger">
                             {authError ? <p>{authError}</p> : null }
                             
-                        </div>
+                        </p>
+                        {/* <p class="text-primary">.text-primary</p> */}
                     </div>
                 </form>
+                <button onClick = {this.google} className = "btn pink lighten-1 z-depth-0 ">Sign in with google</button>
 
                 </div>
                 </div> 
@@ -61,19 +84,19 @@ class SignIn extends Component {
     }
 }
 
-// const mapStateToProps = (state) => {
+const mapStateToProps = (state) => {
+    console.log('state', state)
+    return {
+        authError : state.auth.authError
+    }
+}
 
-//     return {
-//         authError : state.auth.authError
-//     }
-// }
+const mapDispatchToProps = (dispatch) => {
 
-// const mapDispatchToProps = (dispatch) => {
+    return {
+        signIn : (creds) => dispatch (handleSignIn(creds))
+    }
+}
 
-//     return {
-//         signIn : (creds) => dispatch (handleSignIn(creds))
-//     }
-// }
-
-// export default connect(mapStateToProps, mapDispatchToProps) (SignIn)
-export default SignIn
+export default connect(mapStateToProps, mapDispatchToProps) (SignIn)
+// export default SignIn

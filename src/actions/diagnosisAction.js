@@ -1,8 +1,8 @@
 import axios from "axios";
 
-const LOAD_DIAGNOSIS = 'LOAD_DIAGNOSIS'
-const CREATE_DIAGNOSIS = 'CREATE_DIAGNOSIS'
-
+export const LOAD_DIAGNOSIS = 'LOAD_DIAGNOSIS'
+export const CREATE_DIAGNOSIS = 'CREATE_DIAGNOSIS'
+export const DIAGNOSIS_RESULT = 'DIAGNOSIS_RESULT'
 
 function loadDiagnosis (diagnosisList) {
     return {
@@ -38,11 +38,20 @@ export function handleLoadDiagnosis () {
 
 }
 
+
 function createDiagnosis (diagnosis) {
 
     return {
         type : CREATE_DIAGNOSIS,
         diagnosis 
+    }
+}
+
+function diagnosisResult (result) {
+
+    return {
+        type : DIAGNOSIS_RESULT,
+        result 
     }
 }
 
@@ -55,10 +64,11 @@ export function handleCreateDiagnosis (diagnosis) {
         const authorId = getState().firebase.auth.uid
 
         let diagnosis_result = ''
-        const URL = 'https://wa3ia.herokuapp.com/diagnosis'
+        const URL = 'https://wa3ia.herokuapp.com/api/diagnosis'
         const request = diagnosis
         // let response = ''
 
+        console.log('diag', diagnosis)
 
         axios
             .post(URL, request)
@@ -71,14 +81,19 @@ export function handleCreateDiagnosis (diagnosis) {
             .then(() => {
                 firestore.collection('users').doc(`${authorId}`).collection('diagnosis').add({
                     ...diagnosis,
-                    diagnosis_result
+                    ...diagnosis_result
                 })
             })
             .then(() => {
                 dispatch(createDiagnosis({
                     ...diagnosis,
-                    diagnosis_result
+                    ...diagnosis_result
                 }))
+            })
+            .then(() => {
+                dispatch(diagnosisResult(diagnosis_result))
+            }).catch((err)=> {
+                console.log('err', err)
             })
     }
 }

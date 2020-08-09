@@ -1,8 +1,8 @@
 import React, {Component, Fragment} from "react";
-import Header from "./Header";
+import { connect } from "react-redux";
+
 import HomeBody from "./HomeBody";
 import Footer from "./Footer";
-import Navbar from "./Navbar";
 
 class Home extends Component {
 
@@ -10,7 +10,7 @@ class Home extends Component {
 
         return(
             <Fragment>
-                {/* <Navbar/>  */}
+                {/* <Preloader/>  */}
                 <HomeBody/>   
                 <Footer/>
             </Fragment>
@@ -18,4 +18,11 @@ class Home extends Component {
     }
 }
 
-export default Home
+const mapStateToProps = (state) => {
+    console.log('state', state)
+    return {
+        auth : state.firebase.auth
+    }
+}
+
+export default connect(mapStateToProps)(Home)

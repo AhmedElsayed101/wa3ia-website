@@ -1,7 +1,7 @@
 import axios from "axios";
 
-const LOAD_PREDICTION = 'LOAD_PREDICTION'
-const CREATE_PREDICTION = 'CREATE_PREDICTION'
+export const LOAD_PREDICTION = 'LOAD_PREDICTION'
+export const CREATE_PREDICTION = 'CREATE_PREDICTION'
 
 
 function loadPrediction (predictionList) {
@@ -55,7 +55,7 @@ export function handleCreatePrediction (prediction) {
         const authorId = getState().firebase.auth.uid
 
         let prediction_result = ''
-        const URL = 'https://wa3ia.herokuapp.com/prediction'
+        const URL = 'https://wa3ia.herokuapp.com/api/prediction'
         const request = prediction
         // let response = ''
 

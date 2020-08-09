@@ -5,7 +5,7 @@ export const SIGN_UP_SUCCESS = 'SIGN_UP_SUCCESS'
 export const SIGN_UP_ERROR = 'SIGN_UP_ERROR'
 
 
-const signIn = (creds) => {
+export const signIn = (creds) => {
     return {
         type : LOGIN_SUCCESS,
         creds
@@ -93,6 +93,8 @@ export const handleSignUp = (newUser) => {
                 initials : newUser.firstName[0] + newUser.lastName[0],   
             })
             
+        }).then(() => {
+            firebase.auth().currentUser.sendEmailVerification()
         }).then(() => {
             dispatch(signUpSuccess(newUser))
         }).catch((err) => {

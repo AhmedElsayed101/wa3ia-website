@@ -96,8 +96,8 @@ class HomeBody extends Component {
                                     <i class="fa fa-american-sign-language-interpreting" aria-hidden="true"></i>
                                 </div>
                                 <div class="service-text">
-                                    <h4 class="title">Consultation</h4>
-                                    <p>We provide you with a verified connecion with your doctor</p>
+                                    <h4 class="title">Diagnosis</h4>
+                                    <p>We provide you with a verified dignosi using answers from your questions</p>
                                 </div>
                             </div>
                         </div>
@@ -118,8 +118,8 @@ class HomeBody extends Component {
                                     <i class="fa fa-truck" aria-hidden="true"></i>
                                 </div>
                                 <div class="service-text">
-                                    <h4 class="title">5-year survival rate</h4>
-                                    <p>We help the doctor to detect hte best treatment track </p>
+                                    <h4 class="title">Prediction</h4>
+                                    <p>We help the doctor to detect if a mamogram picture is Normal or not </p>
                                 </div>
                             </div>
                         </div>

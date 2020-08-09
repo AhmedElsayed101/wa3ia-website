@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from "react-redux";
 import { firestore } from "firebase";
-import { handleSignUp } from "../../actions/authActions"; 
+import { handleSignUp } from "../../actions/authAction"; 
 
 
 class SignUp extends Component {
@@ -83,7 +83,8 @@ class SignUp extends Component {
         const {authError} = this.props
         authError && console.log('error',authError)
         return (
-            <div className = "container">
+                <div className="container">
+                <div className = "container" style = {{marginTop : 100}}></div>
                 <form onSubmit = {this.submitForm} className="white">
                     <h5 className = "grey-text text-darken-3">Sign Up</h5>
                     <div className="input-field">
@@ -103,13 +104,14 @@ class SignUp extends Component {
                         <input  type="text" id= "lastName" onChange = {this.handleChange}/>
                     </div>
                     <div className="input-field">
-                        <button className = "btn pink lighten-1 z-depth-0">Login</button>
-                        <div className="red-text center">
+                        <button className = "btn pink lighten-1 z-depth-0">SignUp</button>
+                        <div className="text-danger center">
                             {
                                 authError ? <p>{authError}</p> : null
                             }
                         </div>
                     </div>
+
                 </form>
 
                 
