@@ -9,7 +9,8 @@ class Base64 extends React.Component {
   constructor() {
     super()
     this.state = {
-      files: []
+      files: [],
+      prediction_result : null
     }
   }
 
@@ -68,7 +69,8 @@ class Base64 extends React.Component {
       <div className = 'center'>
 
         <h1 className="text-center">Predict your case using your mamogram</h1>
-
+        
+    {this.state.prediction_result && <h2 className="text-center"> {`Your prediction is ${this.state.prediction_result.prediction_output} with confidence ${this.state.prediction_result.confidence_output}%`}</h2> }
         <div className="text-center mt-25">
           <p className="text-center">Try To Upload Some Image</p>
           <FileBase64
